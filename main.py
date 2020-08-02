@@ -138,7 +138,6 @@ def main():
     gameState = object.GameState() #gameEngine class
     validMoves = gameState.getValidMoves() #Move Class
     moveMade = False #validMoves's a very expensive method, in this reason we should put a flag thus it won't be looping in every frame.
-    get_response = False
     #creating read_thread and write_thread
     read_thread = ReadThread(tcpClient)
     write_thread = WriteThread(tcpClient)
@@ -152,11 +151,11 @@ def main():
 
         # it moves the other client
         if read_thread.data != None:
-            print("second part move")
             gameState, moves = read_thread.data
             print("Read Thread : ", read_thread.data)
             # moving pieces
             if moves in validMoves:
+                print("pieces2 moved")
                 gameState.makeMove(moves)
                 moveMade = True
                 animate = True
@@ -167,7 +166,6 @@ def main():
                 #write_thread.join()
         
         #event handler
-        keys = p.key.get_pressed()
         for event in p.event.get():
             if event.type == p.QUIT:
                 startGame = False
@@ -190,32 +188,38 @@ def main():
                         moves = object.Move(playerClicks[0], playerClicks[1], gameState.board)
                         # here all procress, sending and pulling data
                         data_package = (gameState, moves)
+
                         # sending data
                         if data_package != None:
+                            print("data sent")
                             write_thread.send_data(data_package)
+
                         # it moves player
-                        print("First part move")
                         if moves in validMoves:
+                            print("pieces1 moved")
                             gameState.makeMove(moves)
                             moveMade = True
                             animate = True
                             sqSelected = () # restart
                             playerClicks = []
-                            read_thread.data = None
+                            #read_thread.data = None
                             #read_thread.join()
                             #write_thread.join()
 
                         # getting data    
                         if not moveMade:
+                            print("if not movemade")
                             playerClicks = [sqSelected]
                             
            # key handler
             elif event.type == p.KEYDOWN:
                 if event.key == p.K_z:
+                    print("pieces undo")
                     gameState.undoMove()
                     moveMade = True
                     animate = False
                 if event.key == p.K_r: # reset the board
+                    print("game restart")
                     gameState = object.GameState()
                     validMoves = gameState.getValidMoves()
                     sqSelected = ()
