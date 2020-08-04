@@ -4,7 +4,7 @@ from threading import Thread
 import object
 
 class threadClient(Thread):
-    def __init__(self, port, conn, server):
+    def __init__(self, ip, port, conn, server):
         self.ip = ip
         self.port = port
         self.conn = conn
@@ -18,14 +18,13 @@ class threadClient(Thread):
     def run(self):
         while True:
             data = pickle.loads(self.conn.recv(2048 * 10)) # (gameState, moves)
-            if data[0] is not self.gameState:
-                print("gameState is valid")
+            if self.gameState is not data[0]:
                 self.gameState = data[0]
 
             if data[1] in self.gameState.getValidMoves():
-                print("move is valid")
                 self.server.transfer_message(self, data)
-                
+                data = None
+
     def notify(self, data):
         self.conn.send(pickle.dumps(data))
 
@@ -37,12 +36,10 @@ class Server(Thread): # takes inheritance from Thread
 
     def transfer_message(self, sending_client, data):
         if sending_client not in self.clients:
-            print("transfer message")
             self.clients.append(sending_client)
 
         for client in self.clients:
             if sending_client is not client:
-                print("client is ")
                 client.notify(data)
     
     def run(self):
