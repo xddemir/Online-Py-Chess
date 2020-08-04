@@ -2,7 +2,7 @@
 
 > Online chess game with python.
 
-Implementation of the hangman game in Pygame. With the ability to ask today's word, most used & searched words and bunch of other fun options to play.
+Implementation of the online chess game with explanation lines. it works on local server with IPV4, python 3.8.3
 
 ![chess](Assets/chess.gif)
 
@@ -12,6 +12,13 @@ Implementation of the hangman game in Pygame. With the ability to ask today's wo
 * [Release History](#Release-History)
 * [Meta](#Meta)
 * [Contributing](#Contributing)
+
+## Libraries
+
+* pygame module
+* socket module
+* multithreading modules
+* pickle module
 
 ## TODO's
 
