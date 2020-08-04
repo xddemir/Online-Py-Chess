@@ -8,8 +8,6 @@
 
 Implementation of the hangman game in Pygame. With the ability to ask today's word, most used & searched words and bunch of other fun options to play.
 
-![pychess](Assets/pychess.png)
-
 ![chess](Assets/chess.gif)
 
 ## Table of Contents
