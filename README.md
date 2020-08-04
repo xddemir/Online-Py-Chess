@@ -1,6 +1,6 @@
 # PYCHESS
 
-> Online chess game with python.
+> **Online chess game with python.
 
 Implementation of the online chess game with explanation lines. it works on local server with IPV4, python 3.8.3
 
@@ -29,4 +29,4 @@ Doğukan Demir – [@mastermachina](https://github.com/mastermachina) – slayer
 
 Telegram - Maestro_20
 
-a licence won't add. If you want to use the program in your project, please touch with me on mail
+***Any licence won't be added and for using the game in your project just contact with me via telegram or mail
