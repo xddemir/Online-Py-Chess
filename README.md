@@ -2,10 +2,6 @@
 
 > Online chess game with python.
 
-![Python Version][pypi-image]
-![Build Status][pypi-status]
-[![Downloads Stats][pypi-version]][pypi-url]
-
 Implementation of the hangman game in Pygame. With the ability to ask today's word, most used & searched words and bunch of other fun options to play.
 
 ![chess](Assets/chess.gif)
