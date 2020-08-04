@@ -13,13 +13,6 @@ Implementation of the online chess game with explanation lines. it works on loca
 * [Meta](#Meta)
 * [Contributing](#Contributing)
 
-## Libraries
-
-* pygame module
-* socket module
-* multithreading modules
-* pickle module
-
 ## TODO's
 
 * Add Menu
